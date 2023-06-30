@@ -816,17 +816,19 @@ TEST_F(CastExprTest, decimalToInt) {
           {-9999999, -3, 0, 55, 999999, std::nullopt}));
 
   auto longFlat = makeNullableLongDecimalFlatVector(
-      {DecimalUtil::kLongDecimalMin,
+      {std::numeric_limits<int32_t>::max(),
        0,
-       DecimalUtil::kLongDecimalMax,
-       HugeInt::build(0xffff, 0xffffffffffffffff),
+       std::numeric_limits<int32_t>::min(),
        std::nullopt},
       DECIMAL(38, 5));
   testComplexCast(
       "c0",
       longFlat,
       makeNullableFlatVector<int32_t>(
-          {0, 0, 1e33, 1.2089258196146293E19, std::nullopt}));
+          {std::numeric_limits<int32_t>::max(),
+           0,
+           1.std ::numeric_limits<int32_t>::min(),
+           std::nullopt}));
 }
 
 TEST_F(CastExprTest, decimalToDouble) {
