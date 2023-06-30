@@ -827,7 +827,7 @@ TEST_F(CastExprTest, decimalToInt) {
       makeNullableFlatVector<int32_t>(
           {std::numeric_limits<int32_t>::max(),
            0,
-           1.std ::numeric_limits<int32_t>::min(),
+           std::numeric_limits<int32_t>::min(),
            std::nullopt}));
 }
 
