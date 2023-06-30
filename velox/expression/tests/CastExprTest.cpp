@@ -808,12 +808,12 @@ TEST_F(CastExprTest, toString) {
 TEST_F(CastExprTest, decimalToInt) {
   // short to short, scale up.
   auto shortFlat = makeNullableShortDecimalFlatVector(
-      {-9999999, -3, 0, 55, 999999, std::nullopt},
-      DECIMAL(18, 18));
+      {-9999999, -3, 0, 55, 999999, std::nullopt}, DECIMAL(18, 18));
   testComplexCast(
       "c0",
       shortFlat,
-      makeNullableFlatVector<int32_t>({0, -3, 0, 0, 55, std::nullopt}));
+      makeNullableFlatVector<int32_t>(
+          {-9999999, -3, 0, 55, 999999, std::nullopt}));
 }
 
 TEST_F(CastExprTest, decimalToDouble) {
